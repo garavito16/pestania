@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import Tabs from "./Components/Tabs";
+import ContenidoTab from "./Components/ContenidoTab";
+import React, {useState} from "react";
 
 function App() {
+
+  const datos = [
+    {
+      nombre : 'Tab1',
+      content :'Tab 1 content is showing here'
+    },
+    {
+      nombre : 'Tab2',
+      content :'Tab 2 content is showing here'
+    },
+    {
+      nombre : 'Tab3',
+      content :'Tab 3 content is showing here'
+    },
+    {
+      nombre : 'Tab4',
+      content :'Tab 4 content is showing here'
+    }
+  ];
+
+  const [contenido,setContenido] = useState(datos[0].content);
+
+  const cambiarTab = (contenido) => {
+    setContenido(contenido);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Tabs datos={datos} cambiarTab={cambiarTab}/>
+      <ContenidoTab contenido={contenido}/>
     </div>
   );
 }
